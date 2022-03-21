@@ -48,9 +48,12 @@ GROUP BY 1;
 
 #### _Comments_: 
 - Lack of a table issue
+
 "Store" table exists on the DB schema overview, however, when I run this query, it returns a error message saying, "permission denied for table store". Therefore, I had to use "Inventory" table to get store_id information
 
 - Missing weeks on data
+
+
 My query was designed to captured each of the last 12 _calendar_ weeks. However, the result is missing some weeks(including, 2020-08-10, 2020-07-20, 2020-06-08). I assumed that this is caused by either 1)This specific store(store_id = 1) had some bad weeks as business OR 2)The data is missing.
 
 #### **Answer:**
@@ -126,9 +129,11 @@ WHERE number_of_rental >= 2
 
 #### _Comments_:
 - No updated time stamp for inventory
+
 I attempted to calculate total number of inventory on the inventory table using the last update column and count the inventory id. However there was no updated time stamp within August 2020, therefore, last update is not a proper reference date. I’m unsure where else to find a proper date reference for the inventory
 
 - Provided the Answer 2, the second solution
+
 Knowing the limitation of inventory date reference, I tried to get the total rental with running 7-day sum
 
 
