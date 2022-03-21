@@ -106,9 +106,12 @@ WITH pgr_total AS (
 	JOIN inventory as i ON i.inventory_id = r.inventory_id 
 	JOIN film as f ON f.film_id = i.film_id 
 	JOIN customer as c ON c.customer_id = r.customer_id
+  	JOIN address as a ON a.address_id = c.address_id
+  	JOIN city as ct ON ct.city_id = a.city_id
 
 	WHERE f.rating = 'PG' 
-		AND c.activebool = TRUE -- active customers only 
+		AND c.activebool = TRUE -- active customers only
+  		AND ct.city NOT LIKE '%Dallas%'
 		AND
 ( r.rental_ts::date BETWEEN '2020-07-16' AND '2020-07-31' 
 OR r.rental_ts::date BETWEEN '2020-08-16' AND '2020-08-31')  -- to filter last 15 days of each month 
